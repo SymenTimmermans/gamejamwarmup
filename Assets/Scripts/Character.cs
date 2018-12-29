@@ -7,9 +7,10 @@ public class Character : MonoBehaviour
     public GameObject playerCamera;	
 	public GameObject playerGraphics;
     public float speed;
-    public float jumpForce;
+    
 	private Rigidbody myRigidbody;	
     private Vector3 jump;
+    public float jumpForce;
     private Vector3 eulerAngleVelocity;
 
      private AudioSource myAudioSource;
@@ -29,7 +30,7 @@ public class Character : MonoBehaviour
         this.myRigidbody = this.GetComponent<Rigidbody>();
         this.jump = new Vector3(0.0f, 2.0f, 0.0f);
         this.speed = 10f;	
-        this.jumpForce = 25;
+        this.jumpForce = 2.5f;
     }
 
     /// <summary>
@@ -69,9 +70,10 @@ public class Character : MonoBehaviour
         //JUMPEHHH
         if(Input.GetKey(KeyCode.Space)) {	
             if (!this.myAudioSource.isPlaying) {
-                this.myAudioSource.Play();	                        
+                this.myAudioSource.Play();	 
+                this.myRigidbody.AddForce(jump * jumpForce, ForceMode.Impulse);                       
             }					                    
-            this.myRigidbody.AddForce(jump * jumpForce, ForceMode.Force);         
+                     
         }		
 	}
 
