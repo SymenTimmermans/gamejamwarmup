@@ -67,9 +67,11 @@ public class Character : MonoBehaviour
         }
 
         //JUMPEHHH
-        if(Input.GetKey(KeyCode.Space)) {		
-            this.myAudioSource.Play();	        					 
-            this.myRigidbody.AddForce(jump * jumpForce, ForceMode.Force);                
+        if(Input.GetKey(KeyCode.Space)) {	
+            if (!this.myAudioSource.isPlaying) {
+                this.myAudioSource.Play();	                        
+            }					                    
+            this.myRigidbody.AddForce(jump * jumpForce, ForceMode.Force);         
         }		
 	}
 
