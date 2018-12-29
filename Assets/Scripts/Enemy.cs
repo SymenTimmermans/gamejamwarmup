@@ -67,7 +67,9 @@ public class Enemy : MonoBehaviour
             {
                 // play bam sound - and freeze enemy movement?
                 this.myAudioSource.clip = this.bamClip;
-                this.myAudioSource.Play();
+                if (!this.myAudioSource.isPlaying) {
+                    this.myAudioSource.Play();
+                }
             }
         }
     }
